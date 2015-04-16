@@ -2,17 +2,21 @@
 <html>
 <head>
   <title>MusicApp</title>
-  <% if flash.now[:errors] %>
+
+
+  <%= csrf_meta_tags %>
+
+
+</head>
+<body>
+  <% if flash[:errors] %>
     <br>
     <ul>
-    <% flash.now[:errors].each do |error| %>
+    <% flash[:errors].each do |error| %>
     <li><%= error %></li>
     <% end %>
-  </ul><br><br>
+  </ul><br>
   <% end %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
   <% if logged_in? %>
     Hello <%= @user.email %>
     <form  action="/sessions" method="post">
@@ -23,10 +27,6 @@
   <% else %>
     <a href="/users/new">Sign up</a>
   <% end %>
-
-</head>
-<body>
-
 <%= yield %>
 
 </body>

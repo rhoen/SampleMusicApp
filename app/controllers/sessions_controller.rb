@@ -8,9 +8,9 @@ class SessionsController < ApplicationController
   #post to session runs create action
   def create
     user = User.find_by_credentials(params[:user][:email],params[:user][:password])
-  
+
     if user.nil?
-      flash[:errors] = ["incorrect email/password combination"]
+      flash.now[:errors] = ["incorrect email/password combination"]
       render :log_in
     else
       user.reset_session_token!
