@@ -5,11 +5,20 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   def self.generate_session_token
-    SecureRandom.base_64
+    SecureRandom.base64
+  end
+  
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
+    if user.is_password?(password)
+      user
+    else
+      nil
+    end
   end
 
-  def self.reset_session_token!
-    self.session_token ||= self.generate_session_token
+  def reset_session_token!
+    self.session_token = User.generate_session_token
     self.save!
   end
 
@@ -21,18 +30,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
-  def find_by_credentials(email, password)
-    user = User.find_by(email: email)
-    if user.is_password?(password)
-      user
-    else
-      nil
-    end
-  end
 
   private
   def ensure_session_token
-    self.reset_session_token!
+    self.session_token ||= User.generate_session_token
   end
 
 end
