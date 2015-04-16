@@ -1,11 +1,14 @@
 <form class="" action="/albums" method="post">
   <%= authenticate_form %>
   <label for="album name">Album Name</label>
-  <input type="text" name="album_name" value="album[name]">
+  <input type="text" name="album[name]" value="">
   <label for="band">Band</label>
-  <select class="" name="album[band]">
+  <select class="" name="album[band_id]">
     <% @bands.each do |band| %>
-    <option value="<%=band.id%>"><%= band.name %> <%= @band.id == band.id ? "selected" : "" %></option>
+    <option value="<%=band.id%>" <%= @band.id == band.id ? "selected" : "" %> ><%= band.name %> </option>
     <% end %>
   </select>
+  <button>Submit!</button>
 </form>
+<a href="<%= bands_url %>">All Bands</a><br>
+<a href="<%= new_band_url %>">Start a new band!</a>

@@ -5,6 +5,6 @@ Their ablums include:
   <li><%= album.name %> <a href="<%= albums_url(album) %>">album link</a></li>
   <% end %>
 </ul>
-<a href=" <%= bands_url %> ">All Bands</a><br>
-<a href="/albums/new">add an album</a><br>
-<a href="/bands/new">Start a new band!</a>
+<a href="<%= bands_url %>">All Bands</a><br>
+<a href="<%= new_band_album_url(@band) %>">add an album</a><br>
+<a href="<%= new_band_url %>">Start a new band!</a>

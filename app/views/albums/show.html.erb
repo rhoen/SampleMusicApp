@@ -1,0 +1,8 @@
+<h1><%= @album.name %> by <%= @album.band.name %></h1>
+<% i = 0 %>
+<% @album.tracks.each do |track| %>
+<%= i + 1 %>. <%= track.name %>
+<% end %>
+<a href="<%= bands_url %>">All Bands</a><br>
+
+<a href="<%= new_band_url %>">Start a new band!</a>
