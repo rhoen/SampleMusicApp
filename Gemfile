@@ -34,7 +34,7 @@ end
 
 # Use ActiveModel has_secure_password
  gem 'bcrypt-ruby', require: 'bcrypt'
-
+gem 'annotate'
  group :development do
  	  gem 'better_errors'
  	  gem 'binding_of_caller'

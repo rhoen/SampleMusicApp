@@ -1,0 +1,9 @@
+<h1>The page for <%= @band.name %></h1>
+Their ablums include:
+<ul>
+  <% @band.albums.each do |album| %>
+  <li><%= album.name %> <a href="<%= albums_url(album) %>">album link</a></li>
+  <% end %>
+</ul>
+<a href="/albums/new">add an album</a><br>
+<a href="/bands/new">Start a new band!</a>
