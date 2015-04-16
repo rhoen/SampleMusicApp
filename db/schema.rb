@@ -14,12 +14,11 @@
 ActiveRecord::Schema.define(version: 20150416132813) do
 
   create_table "users", force: true do |t|
-    t.string   "email",                                                                 null: false
-    t.string   "password_digest",                                                       null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.string   "session_token"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "session_token"
-    t.string   "#<ActiveRecord::ConnectionAdapters::TableDefinition:0x007fa37ad714a8>"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
