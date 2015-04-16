@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416184423) do
+ActiveRecord::Schema.define(version: 20150416184712) do
 
   create_table "albums", force: true do |t|
     t.string   "name",       null: false
-    t.integer  "album_id",   null: false
+    t.integer  "band_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "albums", ["album_id"], name: "index_albums_on_album_id"
+  add_index "albums", ["band_id"], name: "index_albums_on_band_id"
 
   create_table "bands", force: true do |t|
     t.string   "name",       null: false
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20150416184423) do
   end
 
   add_index "bands", ["name"], name: "index_bands_on_name", unique: true
+
+  create_table "tracks", force: true do |t|
+    t.string   "name"
+    t.text     "lyrics"
+    t.string   "track_type", default: "regular"
+    t.integer  "album_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tracks", ["album_id"], name: "index_tracks_on_album_id"
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
