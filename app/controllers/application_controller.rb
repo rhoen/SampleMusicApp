@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :logged_in?
+
   def current_user
     return nil if @user.nil?
     User.find_by(session_token: @user.session_token)
@@ -16,6 +17,6 @@ class ApplicationController < ActionController::Base
     params.require(:user).permit(:email, :password)
   end
   def redirect_unless_logged_in
-    redirect_to new_user_url unless logged_in?
+    if !logged_in? then redirect_to new_user_url end
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :redirect_unless_logged_in, except: [:new]
+  before_action :redirect_unless_logged_in, except: [:new, :create]
   #new action called from a get request to /users/new
   #responds by sending a form to create a new user
   def new
