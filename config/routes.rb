@@ -5,6 +5,9 @@ MusicApp::Application.routes.draw do
   resources :bands, only: [:new, :create, :show, :index] do
      resources :albums, only: [:new]
   end
-  resources :albums, only: [:new, :create, :show]
-  resources :tracks, only: [:new, :create, :show]
+  resources :albums, only: [:new, :create, :show, :destroy] do
+    resources :tracks, only: [:new]
+  end
+
+  resources :tracks, only: [:new, :create, :show, :destroy]
 end

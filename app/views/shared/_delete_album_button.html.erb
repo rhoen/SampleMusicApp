@@ -1,0 +1,5 @@
+<form class="" action="<%= album_url(album) %>" method="post">
+  <%= authenticate_form %>
+  <input type="hidden" name="_method" value="delete">
+  <button>Delete Album</button>
+</form>

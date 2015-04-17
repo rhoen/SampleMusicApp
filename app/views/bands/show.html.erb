@@ -2,7 +2,8 @@
 Their ablums include:
 <ul>
   <% @band.albums.each do |album| %>
-  <li><%= album.name %> <a href="<%= albums_url(album) %>">album link</a></li>
+  <li><%= album.name %> <a href="<%= album_url(album) %>">album link</a></li>
+  <%= render "shared/delete_album_button", album: album %>
   <% end %>
 </ul>
 <a href="<%= bands_url %>">All Bands</a><br>

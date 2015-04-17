@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+  before_action :redirect_unless_logged_in
   def new
     @band = Band.find(params[:band_id])
     @bands = Band.all
@@ -20,6 +21,14 @@ class AlbumsController < ApplicationController
   def show
     @album = Album.find(params[:id])
     render :show
+  end
+
+  def destroy
+    @album = Album.find(params[:id])
+    @band = @album.band
+    @album.delete
+    flash[:success] = ['album deleted']
+    redirect_to band_url @band
   end
 
   private

@@ -9,14 +9,24 @@
 
 </head>
 <body>
-  <% if flash[:errors] %>
+
+  <% if flash[:success] %>
+  <ul>
+    <% flash[:success].each do |item| %>
+    <li><%=item%></li>
+    <%end%><br>
+  </ul>
+  <% end %>
+
+  <% if flash[:errors]  %>
     <br>
     <ul>
     <% flash[:errors].each do |error| %>
     <li><%= error %></li>
     <% end %>
-  </ul><br>
+  </ul>
   <% end %>
+
   <% if logged_in? %>
     Hello <%= @user.email %>
     <form  action="/sessions" method="post">
@@ -30,7 +40,5 @@
 <%= yield %>
 
 </body>
-<footer>
 
-</footer>
 </html>

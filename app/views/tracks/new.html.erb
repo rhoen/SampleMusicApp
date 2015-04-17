@@ -1,0 +1,18 @@
+<form class="" action="<%= tracks_url %>" method="post">
+  <%= authenticate_form %>
+  <label for="track name">Track Name</label>
+  <input type="text" name="track[name]" value=""><br>
+  <label for="lyrics">Lyrics</label>
+  <textarea name="track[lyrics]" value="" rows="4" cols="50"></textarea><br>
+  <label for="album">Album</label>
+  <select class="" name="track[album_id]">
+    <% @albums.each do |album| %>
+    <option value="<%=album.id%>" <%= unless @album.nil? then
+      @album.id == album.id ? "selected" : "" end%> ><%= album.name %> </option>
+    <% end %>
+  </select>
+  <button>Submit!</button>
+</form>
+<a href="<%= bands_url %>">All Bands</a><br>
+<a href="<%= albums_url %>">All Albums</a><br>
+<a href="<%= new_band_url %>">Start a new band!</a>

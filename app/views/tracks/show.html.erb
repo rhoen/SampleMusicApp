@@ -1,0 +1,11 @@
+<h1>Track page for <%= @track.band.name %>'s <%= @track.name %> off
+  of <%= @album.name %></h1>
+Lyrics: <%= "#{@track.lyrics}".html_safe %><br>
+
+<%= render "shared/delete_track_button", track: @track %>
+
+<a href="<%= band_url(@album.band) %>"><%= @album.band.name %>'s band page</a><br>
+<a href="<%= new_album_track_url(@album) %>">New track</a><br>
+<a href="<%= album_url(@album) %>"><%= @album.name %>'s album page</a><br>
+<a href="<%= bands_url %>">All Bands</a><br>
+<a href="<%= new_band_url %>">Start a new band!</a>

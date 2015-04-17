@@ -5,7 +5,8 @@
   <label for="band">Band</label>
   <select class="" name="album[band_id]">
     <% @bands.each do |band| %>
-    <option value="<%=band.id%>" <%= @band.id == band.id ? "selected" : "" %> ><%= band.name %> </option>
+    <option value="<%=band.id%>" <%= unless @band.nil? then
+      @band.id == band.id ? "selected" : "" end%> ><%= band.name %> </option>
     <% end %>
   </select>
   <button>Submit!</button>

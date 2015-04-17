@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150416184712) do
+ActiveRecord::Schema.define(version: 20150416220634) do
 
   create_table "albums", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "band_id",    null: false
+    t.string   "name",                              null: false
+    t.integer  "band_id",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "recording_type", default: "studio"
   end
 
   add_index "albums", ["band_id"], name: "index_albums_on_band_id"

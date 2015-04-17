@@ -1,8 +1,11 @@
 <h1><%= @album.name %> by <%= @album.band.name %></h1>
 <% i = 0 %>
 <% @album.tracks.each do |track| %>
-<%= i + 1 %>. <%= track.name %>
-<% end %>
+<%= i += 1 %>. <%= track.name %> <a href=" <%= track_url(track) %>">
+   Track Page </a>  <%= render "shared/delete_track_button", track: track %><br>
+<% end %><br>
+<a href="<%= new_album_track_url(@album) %>">New track</a><br>
+<a href="<%= band_url(@album.band) %>"><%= @album.band.name %>'s band page</a><br>
 <a href="<%= bands_url %>">All Bands</a><br>
 
 <a href="<%= new_band_url %>">Start a new band!</a>
